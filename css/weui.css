@@ -2524,7 +2524,7 @@ input[type="search"]::-webkit-search-results-decoration{
     }
 .img-responsive img {
 	width: 100%;
-	margin: -100px -100px 0 0;
+	/* margin: -100px -100px 0 0; */
 }
 .banner img{
 	width: 100%;
