@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<!-- saved from url=(0016)https://weui.io/ -->
+<html lang="zh-cmn-Hans"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>智慧园区</title>
+    <link rel="stylesheet" href="./css/weui.css">
+    <link rel="stylesheet" href="./css/example.css">
+</head>
+<body ontouchstart="">
+    <div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+
+    <div class="container" id="container"><div class="page home js_show">
+</div>
+
+    $(function(){
+        var winH = $(window).height();
+        var categorySpace = 10;
+
+        $('.js_item').on('click', function(){
+            var id = $(this).data('id');
+            window.pageManager.go(id);
+        });
+        $('.js_category').on('click', function(){
+            var $this = $(this),
+                $inner = $this.next('.js_categoryInner'),
+                $page = $this.parents('.page'),
+                $parent = $(this).parent('li');
+            var innerH = $inner.data('height');
+            bear = $page;
+
+            if(!innerH){
+                $inner.css('height', 'auto');
+                innerH = $inner.height();
+                $inner.removeAttr('style');
+                $inner.data('height', innerH);
+            }
+
+            if($parent.hasClass('js_show')){
+                $parent.removeClass('js_show');
+            }else{
+                $parent.siblings().removeClass('js_show');
+
+                $parent.addClass('js_show');
+                if(this.offsetTop + this.offsetHeight + innerH > $page.scrollTop() + winH){
+                    var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;
+
+                    if(scrollTop > this.offsetTop){
+                        scrollTop = this.offsetTop - categorySpace;
+                    }
+
+                    $page.scrollTop(scrollTop);
+                }
+            }
+        });
+    });</script></div>
+    <script type="text/html" id="tpl_home">
+	<div class="page">
+	<div class="banner">
+		<img src="./images/banner1.jpg" alt="">
+	</div>
+    <div class="weui-grids">
+        <a href="javascript:;" class="weui-grid" data-id="info" >
+            <div class="weui-grid__icon">
+                <img src="./images/info.jpg" alt="">
+            </div>
+            <p class="weui-grid__label">最新信息</p>
+        </a>
+        <a href="javascript:;" class="weui-grid" data-id="room">
+            <div class="weui-grid__icon">
+                <img src="./images/room.jpg" alt="">
+            </div>
+            <p class="weui-grid__label">会议室预订</p>
+        </a>
+        <a href="javascript:;" class="weui-grid" data-id="park">
+            <div class="weui-grid__icon">
+                <img src="./images/park.jpg" alt="">
+            </div>
+            <p class="weui-grid__label">停车服务</p>
+        </a>
+        <a href="javascript:;" class="weui-grid" data-id="repair">
+            <div class="weui-grid__icon">
+                <img src="./images/repair.jpg" alt="">
+            </div>
+            <p class="weui-grid__label">物业报修</p>
+        </a>
+        <a href="javascript:;" class="weui-grid" data-id="shop">
+            <div class="weui-grid__icon">
+                <img src="./images/shop.jpg" alt="">
+            </div>
+            <p class="weui-grid__label">生活服务</p>
+        </a>
+        <a href="javascript:;" class="weui-grid" data-id="card">
+            <div class="weui-grid__icon">
+                <img src="./images/card.jpg" alt="">
+            </div>
+            <p class="weui-grid__label">一卡通</p>
+        </a>
+        <a href="javascript:;" class="weui-grid" data-id="express">
+            <div class="weui-grid__icon">
+                <img src="./images/express.jpg" alt="">
+            </div>
+            <p class="weui-grid__label">快递服务</p>
+        </a>
+        <a href="javascript:;" class="weui-grid" data-id="report">
+            <div class="weui-grid__icon">
+                <img src="./images/report.jpg" alt="">
+            </div>
+            <p class="weui-grid__label">报表</p>
+        </a>
+    </div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$('.weui-grid').on('click', function(){
+			var id = $(this).data('id');
+			//switch(id){
+			//	case "info":document.title="最新信息" ;break;
+			//	case "room":document.title="会议室预定" ;break;
+			//	case "park":document.title="停车服务" ;break;
+			//	case "card":document.title="一卡通" ;break;
+			//	case "express":document.title="快递服务" ;break;
+			//	case "report":document.title="报表" ;break;
+			//}
+			if(id=="shop"){
+				window.location.href="http://www.baidu.com";
+			}
+			window.pageManager.go(id);
+		});
+
+	});
+</script>
+
+<script type="text/html" id="tpl_info">
+<div class="page">
+    <div class="page__hd">
+        <h1 class="page__title">最新消息</h1>
+        <p class="page__desc">文章</p>
+    </div>
+    <div class="page__bd">
+        <article class="weui-article">
+            <h1>大标题</h1>
+            <section>
+                <h2 class="title">章标题</h2>
+                <section>
+                    <h3>1.1 节标题</h3>
+                    <p>
+                        园区指一般由政府（民营企业与政府合作）规划建设的，供水、供电、供气、通讯、道路、仓储及其它配套设施齐全、布局合理且能够满足从事某种特定行业生产和科学实验需要的标准性建筑物或建筑物群体，“包括工业园区、产业园区、物流园区、都市工业园区、科技园区、创意园区等。”
+                    </p>
+                    <p>
+                        <img src="./images/banner1.jpg" alt="">
+                        <img src="./images/banner2.jpg" alt="">
+                    </p>
+                </section>
+                <section>
+                    <h3>1.2 节标题</h3>
+                    <p>
+                        园区指一般由政府（民营企业与政府合作）规划建设的，供水、供电、供气、通讯、道路、仓储及其它配套设施齐全、布局合理且能够满足从事某种特定行业生产和科学实验需要的标准性建筑物或建筑物群体，“包括工业园区、产业园区、物流园区、都市工业园区、科技园区、创意园区等。”
+                    </p>
+                </section>
+            </section>
+        </article>
+    </div>
+</div>
+</script>
+
+
+<script type="text/html" id="tpl_room">
+<div class="page">
+    <div class="page__bd">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">请选择会议室</div>
+            <div class="weui-panel__bd">
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" data-id="roomdetail">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="./images/room1.jpg" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">会议室1</h4>
+                        <p class="weui-media-box__desc">价格：100元/小时</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" data-id="roomdetail">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="./images/room2.jpg" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">会议室2</h4>
+                        <p class="weui-media-box__desc">价格：100元/小时</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+		<div class="weui-btn-area">
+		<a href="javascript:;" class="weui-btn weui-btn_default" data-id="roomrecord">查看历史预约记录</a>
+		</div>
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){
+		$('.weui-media-box_appmsg').on('click', function(){
+			var id = $(this).data('id');
+			window.pageManager.go(id);
+		});
+		
+		$('.weui-btn_default').on('click', function(){
+			var id = $(this).data('id');
+			window.pageManager.go(id);
+		});
+	});
+</script>
+</script>
+<script type="text/html" id="tpl_roomdetail">
+<div class="page">
+	 <div class="img-responsive">
+		<img src="./images/room2.jpg" alt="">
+	</div>
+    <div class="page__bd">
+        <article class="weui-article">
+            <section>
+                <section>
+                    <h1>会议室1</h1>
+                    <p>
+                        地点：2楼101室<br>
+						可容纳人数：30<br>
+						投影仪：有<br>
+                    </p>
+                </section>
+            </section>
+        </article>
+    </div>
+	<div class="weui-btn-area">
+		<a href="javascript:;" class="weui-btn weui-btn_primary" >立即预约</a>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="tpl_roomrecord">
+<div class="page">
+    <div class="page__bd">
+	<div class="weui-cells__title">会议室预约记录</div>
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">会议室1</label>
+                    <em class="weui-form-preview__value">¥200.00</em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">2019-01-01 12:00:00</label>
+                    <span class="weui-form-preview__value">A区201</span>
+                </div>
+            </div>
+        </div>
+        <br>
+         <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">会议室2</label>
+                    <em class="weui-form-preview__value">¥200.00</em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">2019-01-01 12:00:00</label>
+                    <span class="weui-form-preview__value">A区201</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</script>
+
+<script type="text/html" id="tpl_park">
+<div class="page">
+    <div class="page__bd">
+		<div class="weui-cells__title">停车服务</div>
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__bd">
+                    <p>月卡缴费</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="javascript:;" data-id="parkrecord">
+                <div class="weui-cell__bd">
+                    <p>停车记录查询</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$('.weui-cell_access').on('click', function(){
+			var id = $(this).data('id');			
+			window.pageManager.go(id);
+		});
+	});	
+</script>
+
+<script type="text/html" id="tpl_parkrecord">
+<div class="page">
+    <div class="page__bd">
+	<div class="weui-cells__title">停车记录查询</div>
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">车牌号：沪A12345</label>
+                    <em class="weui-form-preview__value">¥200.00</em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">2019-01-01 12:00:00</label>
+                    <span class="weui-form-preview__value">A区201</span>
+                </div>
+            </div>
+        </div>
+        <br>
+         <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">车牌号：沪A12345</label>
+                    <em class="weui-form-preview__value">¥200.00</em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">2019-01-01 12:00:00</label>
+                    <span class="weui-form-preview__value">A区201</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</script>
+
+
+
+
+<script type="text/html" id="tpl_repair">
+<div class="page">
+    <div class="page__bd">
+        <div class="weui-cells__title">请选择报修类型</div>
+        <div class="weui-cells">
+            <div class="weui-cell weui-cell_select">
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="select1">
+                        <option selected="" value="1">水电报修</option>
+                        <option value="2">照明、网络等维修</option>
+                        <option value="3">其他物业维修服务</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+		<div class="page__bd">
+		 <div class="weui-cells__title">请上传照片</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <div class="weui-uploader">
+                        <div class="weui-uploader__bd">
+                            <ul class="weui-uploader__files" id="uploaderFiles">
+                                
+                            </ul>
+                            <div class="weui-uploader__input-box">
+                                <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		        <div class="weui-gallery" id="gallery">
+            <span class="weui-gallery__img" id="galleryImg"></span>
+            <div class="weui-gallery__opr">
+                <a href="javascript:" class="weui-gallery__del">
+                    <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+	
+	<div class="weui-cells__title">情况说明</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入文本" rows="3"></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/200</div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">确定</a>
+			<a href="javascript:;" class="weui-btn weui-btn_default" data-id="repairrecord">查看历史报修记录</a>
+        </div>
+    
+</div>
+<script type="text/javascript">
+    $(function(){
+        var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+            $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
+            $uploaderInput = $("#uploaderInput"),
+            $uploaderFiles = $("#uploaderFiles")
+            ;
+
+        $uploaderInput.on("change", function(e){
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                $uploaderFiles.append($(tmpl.replace('#url#', src)));
+            }
+        });
+        $uploaderFiles.on("click", "li", function(){
+            $galleryImg.attr("style", this.getAttribute("style"));
+            $gallery.fadeIn(100);
+        });
+        $gallery.on("click", function(){
+            $gallery.fadeOut(100);
+        });
+		
+		$('.weui-btn_default').on('click', function(){
+			var id = $(this).data('id');		
+			window.pageManager.go(id);
+		});
+    });
+</script>
+</script>
+
+
+
+<script type="text/html" id="tpl_repairrecord">
+<div class="page">
+    <div class="page__bd">
+	<div class="weui-cells__title">报修记录查询</div>
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">水电报修</label>
+                    <em class="weui-form-preview__value"></em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">2019-01-01 12:00:00</label>
+                    <span class="weui-form-preview__value">去评价</span>
+                </div>
+            </div>
+        </div>
+        <br>
+         <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">照明、网络等维修</label>
+                    <em class="weui-form-preview__value"></em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">2019-01-01 12:00:00</label>
+                    <span class="weui-form-preview__value">去评价</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</script>
+
+
+<script type="text/html" id="tpl_card">
+<div class="page">
+    <div class="page__hd">
+        <h1 class="page__title"></h1>
+        <p class="page__desc"></p>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <div class="weui-footer">
+            <p class="weui-footer__text">请将二维码对准闸机扫描口</p>
+        </div>
+        <br>
+        <br>
+        <div class="weui-footer">
+            <p class="weui-footer__links">
+                <a href="javascript:void(0);" class="weui-footer__link"></a>
+            </p>
+            <p class="weui-footer__text"></p>
+        </div>
+        <div class="weui-footer">
+            <img src="./images/code.jpg" width="200px" height="200px"/>
+        </div>
+        <div class="weui-footer weui-footer_fixed-bottom">
+            <p class="weui-footer__links">
+                <a href="javascript:home();" class="weui-footer__link"></a>
+            </p>
+            <p class="weui-footer__text"></p>
+        </div>
+    </div>
+</div>
+
+</script>
+
+
+<script type="text/html" id="tpl_express">
+<div class="page">
+    <div class="page__bd" style="height: 100%;">
+        <div class="weui-tab">
+            <div class="weui-navbar">
+                <div class="weui-navbar__item weui-bar__item_on">
+                    上门揽件
+                </div>
+                <div class="weui-navbar__item">
+                    送件到门
+                </div>
+                <div class="weui-navbar__item" id="expressrecord">
+                    快递查询
+                </div>
+            </div>
+            <div class="weui-tab__panel">
+					<div class="weui-form-preview__bd">
+						<div class="weui-form-preview__item">
+							<label class="weui-form-preview__label">单号</label>
+							<span class="weui-form-preview__value">1234567</span>
+						</div>
+						<div class="weui-form-preview__item">
+							<label class="weui-form-preview__label">签收时间</label>
+							<span class="weui-form-preview__value">2019-01-01 12:00:00</span>
+						</div>
+						<div class="weui-form-preview__item">
+							<label class="weui-form-preview__label">地址</label>
+							<span class="weui-form-preview__value">上海——北京</span>
+						</div>
+					</div>
+				</div>
+				<br>
+					<div class="weui-form-preview__bd">
+						<div class="weui-form-preview__item">
+							<label class="weui-form-preview__label">单号</label>
+							<span class="weui-form-preview__value">1234567</span>
+						</div>
+						<div class="weui-form-preview__item">
+							<label class="weui-form-preview__label">签收时间</label>
+							<span class="weui-form-preview__value">2019-01-01 12:00:00</span>
+						</div>
+						<div class="weui-form-preview__item">
+							<label class="weui-form-preview__label">地址</label>
+							<span class="weui-form-preview__value">上海——北京</span>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('.weui-navbar__item').on('click', function () {
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+			$('.weui-tab__panel').html();
+        });
+    });
+</script>
+</script>
+
+<script type="text/html" id="tpl_report">
+<div class="page">
+    <div class="page__hd">
+        <h1 class="page__title"></h1>
+        <p class="page__desc"></p>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        
+    </div>
+</div>
+
+</script>
+
+
+    <script src="./js/zepto.min.js"></script>
+    <script type="text/javascript" src="./js/jweixin-1.0.0.js"></script>
+    <script src="./js/weui.min.js"></script>
+    <script src="./js/example.js"></script>
+
+
+</body></html>
